@@ -1,25 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo App</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+        input {
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 8px;
+            margin-left: 5px;
+        }
+        li {
+            list-style: none;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <p>my name is hasan </p>
-    <h1>mayank singh</h1>
-    <h2>mayank singh</h2>
-    <h3>mayank singh</h3>
-    <h4>mayank singh</h4>
-    <h5>mayank singh</h5>
-    <h6>mayank singh</h6>
 
-    <i>hassan is a good student</i><br>
-    <b>hasan is a good boy</b><br>
-    <del>mayank</del><br>
-    <mark>hasan</mark><br>
-    <strong>mayank</strong>
-    
+    <h2>Todo List</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+
+    <ul id="taskList"></ul>
+
+<script>
+function addTask(){
+    let input = document.getElementById("taskInput");
+    let task = input.value.trim();
+
+    if(task === "") return;
+
+    let li = document.createElement("li");
+    li.textContent = task;
+
+    let delBtn = document.createElement("button");
+    delBtn.textContent = "Delete";
+
+    delBtn.onclick = function(){
+        li.remove();
+    };
+
+    li.appendChild(delBtn);
+    document.getElementById("taskList").appendChild(li);
+
+    input.value = "";
+}
+</script>
 
 </body>
 </html>
